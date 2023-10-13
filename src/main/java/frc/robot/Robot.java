@@ -104,8 +104,8 @@ public class Robot extends TimedRobot {
     }
 
     // Data
-    SmartDashboard.putNumber("Encoder Position", m_robotContainer.m_arm.m_leftRotation.getAbsoluteEncoder(Type.kDutyCycle).getPosition());
-    SmartDashboard.putNumber("Encoder Velocity", m_robotContainer.m_arm.m_leftRotation.getAbsoluteEncoder(Type.kDutyCycle).getVelocity());
+    SmartDashboard.putNumber("Encoder Position", m_robotContainer.m_arm.m_rotation.getAbsoluteEncoder(Type.kDutyCycle).getPosition());
+    SmartDashboard.putNumber("Encoder Velocity", m_robotContainer.m_arm.m_rotation.getAbsoluteEncoder(Type.kDutyCycle).getVelocity());
   }
 
   @Override

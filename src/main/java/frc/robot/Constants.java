@@ -27,7 +27,7 @@ public final class Constants {
   // Constants for the arm
   public static final class ArmConstants {
     public static final double kIntakerSpeed = .3;
-    public static final double kRotationSpeed = .5;
+    public static final double kRotationSpeed = .2;
   }
 
   public static final class DriveConstants {
