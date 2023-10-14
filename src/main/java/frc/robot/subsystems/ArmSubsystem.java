@@ -28,7 +28,6 @@ public class ArmSubsystem extends SubsystemBase {
 
     // Public for testing encoders
     public CANSparkMax m_rotation;
-    public CANSparkMax m_rightRotation;
 
     public IntakerMode m_currentMode = IntakerMode.IDLE;
 
