@@ -80,9 +80,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // Set the intaker as going in
-    m_robotContainer.m_arm.toggleIntaker();
-
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -95,13 +92,6 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    // Move the arm based on joystick values
-    m_robotContainer.m_arm.setRotation(m_robotContainer.m_armController.getLeftY());
-
-    // Change intaker direction
-    if (m_robotContainer.m_armController.getAButtonPressed()) {
-      m_robotContainer.m_arm.toggleIntaker();
-    }
 
     // Data
     SmartDashboard.putNumber("Encoder Position", m_robotContainer.m_arm.m_rotation.getAbsoluteEncoder(Type.kDutyCycle).getPosition());

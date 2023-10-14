@@ -28,6 +28,7 @@ public final class Constants {
   public static final class ArmConstants {
     public static final double kIntakerSpeed = .3;
     public static final double kRotationSpeed = .2;
+    public static final double kShootSpeed = .7;
   }
 
   public static final class DriveConstants {

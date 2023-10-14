@@ -13,15 +13,16 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import java.util.List;
 
@@ -34,13 +35,13 @@ import java.util.List;
 public class RobotContainer {
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-  public final Arm m_arm = new Arm();
+  public final ArmSubsystem m_arm = new ArmSubsystem();
 
   // The driver's controller
-  XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
-  XboxController m_armController = new XboxController(OIConstants.kArmControllerPort);
+  CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
+  CommandXboxController m_armController = new CommandXboxController(OIConstants.kArmControllerPort);
 
-  /**
+  /*
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
@@ -51,13 +52,17 @@ public class RobotContainer {
     m_robotDrive.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick.
-        new RunCommand(
+        Commands.run(
             () -> m_robotDrive.drive(
                 MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
                 MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
                 -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
                 true, true),
             m_robotDrive));
+    
+    m_arm.setDefaultCommand(
+        Commands.run(() -> m_arm.setRotationSpeed(m_armController.getLeftY()), m_arm)
+    );
   }
 
   /**
@@ -70,10 +75,11 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(m_driverController, Button.kR1.value)
-        .whileTrue(new RunCommand(
+    m_driverController.rightBumper().whileTrue(new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive));
+    m_armController.b().onTrue(m_arm.getToggleIntakerCommand());
+    m_armController.rightTrigger(0.3).onTrue(m_arm.getShootCommand());
   }
 
   /**
