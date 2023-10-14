@@ -62,10 +62,10 @@ public class ArmSubsystem extends SubsystemBase {
         return this.runOnce(() -> this.toggleIntaker());
     }
 
-    public Command getShootCommand(double waitTime) {
+    public Command getShootCommand() {
         return this.runOnce(() -> this.setIntakerMode(IntakerMode.SHOOT))
         .andThen(
-            new WaitCommand(0.5),
+            new WaitCommand(0.25),
             this.runOnce(() -> this.setIntakerMode(IntakerMode.IDLE)))
         .withInterruptBehavior(InterruptionBehavior.kCancelIncoming);
     }
