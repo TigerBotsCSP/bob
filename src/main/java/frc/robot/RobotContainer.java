@@ -33,6 +33,7 @@ import java.util.List;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+
   // The robot's subsystems
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
   public final ArmSubsystem m_arm = new ArmSubsystem();
@@ -45,6 +46,9 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
+
+
+
     // Configure the button bindings
     configureButtonBindings();
 
@@ -59,10 +63,11 @@ public class RobotContainer {
                 -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
                 true, true),
             m_robotDrive));
+
     
-    m_arm.setDefaultCommand(
-        Commands.run(() -> m_arm.setRotationSpeed(m_armController.getLeftY()), m_arm)
-    );
+    // m_arm.setDefaultCommand(
+    //     Commands.run(() -> m_arm.setRotationSpeed(m_armController.getLeftY()), m_arm)
+    //);
   }
 
   /**
@@ -80,6 +85,9 @@ public class RobotContainer {
             m_robotDrive));
     m_armController.b().onTrue(m_arm.getToggleIntakerCommand());
     m_armController.rightTrigger(0.3).onTrue(m_arm.getShootCommand());
+
+    m_armController.x().onTrue(m_arm.setArmPosition(.1));
+    m_armController.y().onTrue(m_arm.setArmPosition(.2));
   }
 
   /**
