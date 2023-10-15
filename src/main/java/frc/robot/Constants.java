@@ -28,7 +28,7 @@ public final class Constants {
   public static final class ArmConstants {
     public static final double kIntakerSpeed = .3;
     public static final double kRotationSpeed = .2;
-    public static final double kShootSpeed = .7;
+    public static final double kShootSpeed = .9;
   }
 
   public static final class DriveConstants {
@@ -118,8 +118,8 @@ public final class Constants {
     public static final IdleMode kDrivingMotorIdleMode = IdleMode.kBrake;
     public static final IdleMode kTurningMotorIdleMode = IdleMode.kBrake;
 
-    public static final int kDrivingMotorCurrentLimit = 50; // amps
-    public static final int kTurningMotorCurrentLimit = 20; // amps
+    public static final int kDrivingMotorCurrentLimit = 70; // amps
+    public static final int kTurningMotorCurrentLimit = 30; // amps
   }
 
   public static final class OIConstants {
