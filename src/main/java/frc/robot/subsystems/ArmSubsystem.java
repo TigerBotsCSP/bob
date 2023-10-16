@@ -14,7 +14,7 @@ import frc.robot.Constants.ArmConstants;
 
 public class ArmSubsystem extends SubsystemBase {
 
-    private enum IntakerMode {
+    public enum IntakerMode {
         INTAKE(ArmConstants.kIntakerSpeed),
         SHOOT(ArmConstants.kShootSpeed),
         SHOOT_BOTTOM(ArmConstants.kBottomShootSpeed),
@@ -31,17 +31,13 @@ public class ArmSubsystem extends SubsystemBase {
     }
 
     public enum ArmPosition {
-        TOP(IntakerMode.SHOOT_TOP, ArmConstants.kTopArmPosition),
-        MIDDLE(IntakerMode.SHOOT_MIDDLE, ArmConstants.kMiddleArmPosition),
-        BOTTOM(IntakerMode.SHOOT_BOTTOM, ArmConstants.kBottomArmPosition),
-        INTAKE(IntakerMode.SHOOT, ArmConstants.kIntakeArmPosition),
-        NONE(IntakerMode.SHOOT, Double.NaN);
+        SHOOT(ArmConstants.kShootArmPosition),
+        INTAKE(ArmConstants.kIntakeArmPosition),
+        NONE(Double.NaN);
 
-        public IntakerMode m_mode;
         public double m_armPos;
 
-        ArmPosition(IntakerMode mode, double position) {
-            m_mode = mode;
+        ArmPosition(double position) {
             m_armPos = position;
         }
     }
@@ -107,7 +103,7 @@ public class ArmSubsystem extends SubsystemBase {
     }
 
     public Command getShootCommand() {
-        return getShootCommand(m_currentArmPos.m_mode);
+        return getShootCommand(IntakerMode.SHOOT);
     }
 
     private void setIntakerMode(IntakerMode mode) {
@@ -115,10 +111,10 @@ public class ArmSubsystem extends SubsystemBase {
         m_intaker.set(m_currentMode.m_motorSpeed);
     }
 
-    // // Set the rotation of the arm using the joystick value
+    // Set the rotation of the arm using the joystick value
     // public void setRotationSpeed(double speed) {
     //     m_rotation.set(-Math.max(Math.min(speed, ArmConstants.kRotationSpeed), -ArmConstants.kRotationSpeed));
-    //    m_currentArmPos = ArmPosition.NONE;
+    //     m_currentArmPos = ArmPosition.NONE;
     // }
 
     // Toggle the intaker
