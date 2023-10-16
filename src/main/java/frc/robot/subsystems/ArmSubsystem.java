@@ -34,6 +34,7 @@ public class ArmSubsystem extends SubsystemBase {
         TOP(IntakerMode.SHOOT_TOP, ArmConstants.kTopArmPosition),
         MIDDLE(IntakerMode.SHOOT_MIDDLE, ArmConstants.kMiddleArmPosition),
         BOTTOM(IntakerMode.SHOOT_BOTTOM, ArmConstants.kBottomArmPosition),
+        INTAKE(IntakerMode.SHOOT, ArmConstants.kIntakeArmPosition),
         NONE(IntakerMode.SHOOT, Double.NaN);
 
         public IntakerMode m_mode;

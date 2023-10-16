@@ -34,6 +34,7 @@ public final class Constants {
     public static final double kMiddleShootSpeed = .7;
     public static final double kTopShootSpeed = .9;
 
+    public static final double kIntakeArmPosition = 0;
     public static final double kBottomArmPosition = 0;
     public static final double kMiddleArmPosition = .1;
     public static final double kTopArmPosition = .2;
