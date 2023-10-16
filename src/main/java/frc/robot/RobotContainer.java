@@ -86,8 +86,8 @@ public class RobotContainer {
     m_armController.b().onTrue(m_arm.getToggleIntakerCommand());
     m_armController.rightTrigger(0.3).onTrue(m_arm.getShootCommand());
 
-    m_armController.x().onTrue(m_arm.setArmPosition(.1));
-    m_armController.y().onTrue(m_arm.setArmPosition(.2));
+    m_armController.x().onTrue(m_arm.getSetArmPosCommand(.1));
+    m_armController.y().onTrue(m_arm.getSetArmPosCommand(.2));
   }
 
   /**
