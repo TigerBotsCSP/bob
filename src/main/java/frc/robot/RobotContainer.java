@@ -85,7 +85,6 @@ public class RobotContainer {
             () -> m_robotDrive.setX(),
             m_robotDrive));
     m_armController.b().onTrue(m_arm.getToggleIntakerCommand());
-    m_armController.rightTrigger(0.3).onTrue(m_arm.getShootCommand());
 
     m_armController.povUp().onTrue(m_arm.getShootCommand(ArmSubsystem.IntakerMode.SHOOT_TOP));
     m_armController.povDown().onTrue(m_arm.getShootCommand(ArmSubsystem.IntakerMode.SHOOT_BOTTOM));
