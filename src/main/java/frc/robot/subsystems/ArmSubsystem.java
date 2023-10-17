@@ -56,7 +56,7 @@ public class ArmSubsystem extends SubsystemBase {
         m_followIntaker.follow(m_intaker, true);
 
         m_rotation = new CANSparkMax(13, MotorType.kBrushless);
-        //m_rotation.restoreFactoryDefaults();
+        m_rotation.restoreFactoryDefaults();
         //set controller to use through-bore (absolute) encoder 
         m_rotationPID = m_rotation.getPIDController();
 
