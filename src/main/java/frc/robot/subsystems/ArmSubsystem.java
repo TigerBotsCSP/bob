@@ -16,10 +16,9 @@ public class ArmSubsystem extends SubsystemBase {
 
     public enum IntakerMode {
         INTAKE(ArmConstants.kIntakerSpeed),
-        SHOOT(ArmConstants.kShootSpeed),
-        SHOOT_BOTTOM(ArmConstants.kBottomShootSpeed),
-        SHOOT_MIDDLE(ArmConstants.kMiddleShootSpeed),
-        SHOOT_TOP(ArmConstants.kTopShootSpeed),
+        SHOOT_BOTTOM(-ArmConstants.kBottomShootSpeed),
+        SHOOT_MIDDLE(-ArmConstants.kMiddleShootSpeed),
+        SHOOT_TOP(-ArmConstants.kTopShootSpeed),
         IDLE(0);
 
 
@@ -72,7 +71,7 @@ public class ArmSubsystem extends SubsystemBase {
         m_rotationPID.setD(1);
         m_rotationPID.setIZone(0);
         m_rotationPID.setFF(0);
-        m_rotationPID.setOutputRange(-.2, .2);
+        m_rotationPID.setOutputRange(-ArmConstants.kRotationSpeed, ArmConstants.kRotationSpeed);
     }
 
     // Toggle the intaker
@@ -103,7 +102,7 @@ public class ArmSubsystem extends SubsystemBase {
     }
 
     public Command getShootCommand() {
-        return getShootCommand(IntakerMode.SHOOT);
+        return getShootCommand(IntakerMode.SHOOT_TOP);
     }
 
     private void setIntakerMode(IntakerMode mode) {

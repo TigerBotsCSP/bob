@@ -27,12 +27,11 @@ public final class Constants {
   // Constants for the arm
   public static final class ArmConstants {
     public static final double kIntakerSpeed = .3;
-    public static final double kRotationSpeed = .2;
-    public static final double kShootSpeed = .9;
+    public static final double kRotationSpeed = .6;
 
     public static final double kBottomShootSpeed = .1;
-    public static final double kMiddleShootSpeed = .6;
-    public static final double kTopShootSpeed = 1;
+    public static final double kMiddleShootSpeed = .3;
+    public static final double kTopShootSpeed = .6;
 
     public static final double kIntakeArmPosition = 0;
     public static final double kShootArmPosition = .2;
