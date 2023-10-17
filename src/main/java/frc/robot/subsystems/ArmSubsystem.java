@@ -1,9 +1,7 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 import com.revrobotics.SparkMaxPIDController;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -45,7 +43,6 @@ public class ArmSubsystem extends SubsystemBase {
     private CANSparkMax m_followIntaker;
     private CANSparkMax m_rotation;
 
-    private AbsoluteEncoder m_rotationEncoder;
     private SparkMaxPIDController m_rotationPID;
 
     public IntakerMode m_currentMode = IntakerMode.IDLE;
@@ -61,9 +58,7 @@ public class ArmSubsystem extends SubsystemBase {
         m_rotation = new CANSparkMax(13, MotorType.kBrushless);
         m_rotation.restoreFactoryDefaults();
         //set controller to use through-bore (absolute) encoder 
-        m_rotationEncoder = m_rotation.getAbsoluteEncoder(Type.kDutyCycle);
         m_rotationPID = m_rotation.getPIDController();
-        m_rotationPID.setFeedbackDevice(m_rotationEncoder);
 
         // set PID coefficients
         m_rotationPID.setP(.1);
