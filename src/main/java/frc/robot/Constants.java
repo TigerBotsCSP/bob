@@ -34,7 +34,7 @@ public final class Constants {
     public static final double kTopShootSpeed = .6;
 
     public static final double kIntakeArmPosition = 0;
-    public static final double kShootArmPosition = .2;
+    public static final double kShootArmPosition = 40;
   }
 
   public static final class DriveConstants {
