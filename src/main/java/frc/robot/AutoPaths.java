@@ -59,7 +59,7 @@ public final class AutoPaths {
 
     public Command getTwoCubeCommand() {
         // Auto: Shoots preloaded cube, goes down, goes to other cube, comes back and shoots (and parks)
-        String path = "";
+        String path = "paths/StraightToCube.wpilib.json";
 
         return getShootTop()
         .andThen(
